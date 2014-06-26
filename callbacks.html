@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function (){
+            function sayHello(name){
+                // takes 6 inputs
+                var sum = 0;
+                for (var i = 1; i < arguments.length; i++){
+                    sum += arguments[i];
+                }
+                console.log('Hello from ' + name + 'sum is ' + sum);
+            }
+            function sayHi(){
+                console.log('Hi');
+            }
+
+            function performOperation(fn){
+                console.log(arguments);
+
+                var arguments_to_be_passed_to_fn = Array.prototype.slice.call(arguments, 1);
+                console.log(arguments_to_be_passed_to_fn);
+                fn.apply({}, arguments_to_be_passed_to_fn);
+
+                // setTimeout(fn.apply({}, arguments), 1000);
+            }
+
+            performOperation(sayHello, 'Jacob', 1,2,3,4,5,55,5,5,5,55,5,5,5,10);
+        });
+
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>

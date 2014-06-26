@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script>
+
+        $.getJSON('http://restcountries.eu/rest/v1/region/africa', function(data){
+
+            console.log(Object.prototype.toString.call(data));
+            console.log(data[0]);
+
+            // console.log(_.pluck(data, 'name'));
+            var timez = _.groupBy(data, fn_groupBy);
+            var obj = {};
+            for (var prop in timez) {
+                console.log(prop);
+                obj[prop] = _.map(timez[prop], function (elem){
+                    return elem.name;
+                });
+            }
+            console.log(obj);
+
+            function fn_groupBy(country) {
+                if (country.timezones)
+                    return country.timezones.length;
+                else
+                    return 1;
+            }
+
+
+
+
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>
